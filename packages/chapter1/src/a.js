@@ -31,8 +31,7 @@ Worker.prototype.work = function () {
 };
 
 function JuniorEngineer(health, intelligence) {
-  // this._super(health);
-  Worker.call(this, health);
+  this._super(health);
   this._intelligence = intelligence ?? 1;
   if (this._intelligence > 10) {
     this._isBornGenius = true;
@@ -40,6 +39,9 @@ function JuniorEngineer(health, intelligence) {
 }
 
 JuniorEngineer.prototype = Object.create(Worker.prototype, {});
+
+JuniorEngineer.prototype._super = Worker;
+
 JuniorEngineer.prototype.getIntelligence = function () {
   return this._intelligence;
 };
